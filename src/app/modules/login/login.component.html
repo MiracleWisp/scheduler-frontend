@@ -1,12 +1,26 @@
 <div class="row">
   <tui-island class="login-form" size="l" textAlign="center">
-    <form [formGroup]="loginForm">
-      <tui-input formControlName="email">
-        Type an email
-      </tui-input>
-      <tui-input-password formControlName="password" class="tui-space_top-2">
-        Type a password
-      </tui-input-password>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="tui-form__row">
+        <tui-input formControlName="email">
+          Введите email
+        </tui-input>
+      </div>
+      <div class="tui-form__row">
+        <tui-input-password formControlName="password" class="tui-space_top-2">
+          Введите пароль
+        </tui-input-password>
+      </div>
+      <div class="tui-form__buttons tui-form__buttons_align_center">
+        <button
+          tuiButton
+          class="tui-form__button"
+          size="m"
+          type="submit"
+          [showLoader]="loading">
+          Войти
+        </button>
+      </div>
     </form>
   </tui-island>
 </div>
