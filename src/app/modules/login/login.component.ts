@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import {AuthService} from "../../services/auth.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   loading = false;
@@ -28,6 +30,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.loading = true;
     this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(_ => {
+      this.loading = false;
+      this.router.navigate(['/profile']);
+    }, error => {
       this.loading = false;
     })
   }
