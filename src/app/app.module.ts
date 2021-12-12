@@ -1,6 +1,13 @@
 import {NgDompurifySanitizer} from "@tinkoff/ng-dompurify";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {TUI_SANITIZER, TuiDialogModule, TuiNotificationsModule, TuiRootModule} from "@taiga-ui/core";
+import {
+  TUI_SANITIZER,
+  TuiButtonModule, TuiDataListModule,
+  TuiDialogModule, TuiDropdownControllerModule, TuiHostedDropdownModule,
+  TuiLinkModule,
+  TuiNotificationsModule,
+  TuiRootModule
+} from "@taiga-ui/core";
 import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
@@ -10,6 +17,7 @@ import {AuthService} from "./services/auth.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CURRENT_USER} from "./util/injection-tokens";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {TuiAvatarModule} from "@taiga-ui/kit";
 
 @NgModule({
   declarations: [
@@ -23,7 +31,13 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     BrowserAnimationsModule,
     TuiDialogModule,
     TuiNotificationsModule,
-    HttpClientModule
+    HttpClientModule,
+    TuiLinkModule,
+    TuiButtonModule,
+    TuiAvatarModule,
+    TuiHostedDropdownModule,
+    TuiDropdownControllerModule,
+    TuiDataListModule
   ],
   providers: [
     {

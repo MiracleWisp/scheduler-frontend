@@ -1,3 +1,40 @@
-<header>
-  Schedule
+<header class="h-100">
+  <div class="container h-100">
+    <div class="d-flex align-content-center h-100">
+      <div class="tui-text_h1">Scheduler</div>
+      <div *ngIf="(currentUser$ | async) as currentUser"
+           class="d-flex flex-grow-1 align-items-center tui-space_left-5">
+        <ng-container *ngFor="let item of menuItems">
+          <a tuiButton
+             appearance="flat"
+             routerLink="{{item.link}}">
+            {{item.caption}}
+          </a>
+        </ng-container>
+        <div class="tui-text_h6 ms-auto">
+          <tui-hosted-dropdown
+            [content]="dropdown">
+            <tui-avatar text="{{currentUser.firstName}} {{currentUser.lastName}}"></tui-avatar>
+          </tui-hosted-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
+<ng-template #dropdown>
+  <tui-data-list>
+    <ng-container *ngFor="let item of dropdownItems">
+      <a *ngIf="item.link"
+         tuiOption
+         routerLink="{{item.link}}">
+        {{item.caption}}
+      </a>
+      <button *ngIf="!item.link"
+              tuiOption
+      (click)="onClick(item)">
+        {{item.caption}}
+      </button>
+    </ng-container>
+
+  </tui-data-list>
+</ng-template>
