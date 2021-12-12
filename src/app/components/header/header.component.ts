@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
       caption: 'Выйти'
     }
   ];
-  allItems = [...this.menuItems, ...this.dropdownItems];
+  allItems: MenuItem[];
 
 
   @HostBinding('class')
@@ -43,10 +43,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.currentUser.isSpecialist) {
       this.menuItems.push({
+        link: '/offerings',
+        caption: 'Мои услуги'
+      }, {
         link: '/schedule',
         caption: 'Моё расписание'
       })
     }
+
+    this.allItems = [...this.menuItems, ...this.dropdownItems];
   }
 
   onClick(item: MenuItem) {
