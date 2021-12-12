@@ -18,6 +18,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CURRENT_USER} from "./util/injection-tokens";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {TuiAvatarModule} from "@taiga-ui/kit";
+import {TuiActiveZoneModule} from "@taiga-ui/cdk";
+import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {TuiAvatarModule} from "@taiga-ui/kit";
     TuiHostedDropdownModule,
     TuiDropdownControllerModule,
     TuiDataListModule,
-    TuiSvgModule
+    TuiSvgModule,
+    TuiSidebarModule,
+    TuiActiveZoneModule
   ],
   providers: [
     {

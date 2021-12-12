@@ -2,26 +2,49 @@
   <div class="container h-100">
     <div class="d-flex align-content-center h-100">
       <div class="tui-text_h1">Scheduler</div>
-      <div *ngIf="(currentUser$ | async) as currentUser"
-           class="d-none d-md-flex flex-grow-1 align-items-center tui-space_left-5">
-        <ng-container *ngFor="let item of menuItems">
-          <a tuiButton
-             appearance="flat"
-             routerLink="{{item.link}}">
-            {{item.caption}}
-          </a>
-        </ng-container>
-        <div class="tui-text_h6 ms-auto">
-          <tui-hosted-dropdown
-            [content]="dropdown">
-            <tui-avatar text="{{currentUser.firstName}} {{currentUser.lastName}}"></tui-avatar>
-          </tui-hosted-dropdown>
+      <ng-container *ngIf="(currentUser$ | async) as currentUser">
+        <div class="d-none d-md-flex flex-grow-1 align-items-center tui-space_left-5">
+          <ng-container *ngFor="let item of menuItems">
+            <a tuiButton
+               appearance="flat"
+               routerLink="{{item.link}}">
+              {{item.caption}}
+            </a>
+          </ng-container>
+          <div class="tui-text_h6 ms-auto">
+            <tui-hosted-dropdown
+              [content]="dropdown">
+              <tui-avatar text="{{currentUser.firstName}} {{currentUser.lastName}}"></tui-avatar>
+            </tui-hosted-dropdown>
+          </div>
         </div>
-      </div>
-      <div class="d-flex d-md-none ms-auto">
-        <tui-svg src="tuiIconMenuLarge"
-                 class="my-auto"></tui-svg>
-      </div>
+        <div class="d-flex d-md-none ms-auto">
+          <tui-svg src="tuiIconMenuLarge"
+                   class="my-auto"
+                   (click)="toggle(true)"
+                   (tuiActiveZoneChange)="toggle($event)">
+            <div *tuiSidebar="open; direction: 'right'">
+              <ng-container *ngFor="let item of allItems">
+                <a *ngIf="item.link"
+                   class="w-100"
+                   tuiButton
+                   appearance="flat"
+                   routerLink="{{item.link}}"
+                   (click)="onClick(item)">
+                  {{item.caption}}
+                </a>
+                <button *ngIf="!item.link"
+                        class="w-100"
+                        tuiButton
+                        appearance="flat"
+                        (click)="onClick(item)">
+                  {{item.caption}}
+                </button>
+              </ng-container>
+            </div>
+          </tui-svg>
+        </div>
+      </ng-container>
     </div>
   </div>
 </header>

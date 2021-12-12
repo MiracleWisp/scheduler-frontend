@@ -14,12 +14,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser$: Observable<User> = this.authService.currentUserSubject;
 
-  constructor(private authService: AuthService) {
-  }
-
-  @HostBinding('class')
-  private class = 'header'
-
+  open = false;
   menuItems: MenuItem[] = [
     {
       link: '/appointments',
@@ -39,14 +34,28 @@ export class HeaderComponent implements OnInit {
       caption: 'Выйти'
     }
   ];
+  allItems = [...this.menuItems, ...this.dropdownItems];
+
+
+  @HostBinding('class')
+  private class = 'header'
+
+  constructor(private authService: AuthService) {
+  }
+
 
   ngOnInit(): void {
   }
 
   onClick(item: MenuItem) {
+    this.open = false;
     if (item.caption === 'Выйти') {
       this.authService.logout()
     }
+  }
+
+  toggle(open: boolean) {
+    this.open = open;
   }
 }
 
