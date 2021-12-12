@@ -3,7 +3,7 @@
     <div class="d-flex align-content-center h-100">
       <div class="tui-text_h1">Scheduler</div>
       <div *ngIf="(currentUser$ | async) as currentUser"
-           class="d-flex flex-grow-1 align-items-center tui-space_left-5">
+           class="d-none d-md-flex flex-grow-1 align-items-center tui-space_left-5">
         <ng-container *ngFor="let item of menuItems">
           <a tuiButton
              appearance="flat"
@@ -18,6 +18,10 @@
           </tui-hosted-dropdown>
         </div>
       </div>
+      <div class="d-flex d-md-none ms-auto">
+        <tui-svg src="tuiIconMenuLarge"
+                 class="my-auto"></tui-svg>
+      </div>
     </div>
   </div>
 </header>
@@ -31,7 +35,7 @@
       </a>
       <button *ngIf="!item.link"
               tuiOption
-      (click)="onClick(item)">
+              (click)="onClick(item)">
         {{item.caption}}
       </button>
     </ng-container>

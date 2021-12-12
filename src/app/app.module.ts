@@ -6,7 +6,7 @@ import {
   TuiDialogModule, TuiDropdownControllerModule, TuiHostedDropdownModule,
   TuiLinkModule,
   TuiNotificationsModule,
-  TuiRootModule
+  TuiRootModule, TuiSvgModule
 } from "@taiga-ui/core";
 import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -37,7 +37,8 @@ import {TuiAvatarModule} from "@taiga-ui/kit";
     TuiAvatarModule,
     TuiHostedDropdownModule,
     TuiDropdownControllerModule,
-    TuiDataListModule
+    TuiDataListModule,
+    TuiSvgModule
   ],
   providers: [
     {
