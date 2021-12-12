@@ -5,7 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import {TuiInputModule, TuiInputPasswordModule, TuiIslandModule} from "@taiga-ui/kit";
 import {ReactiveFormsModule} from "@angular/forms";
-import {TuiButtonModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiButtonModule, TuiLinkModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import {TuiButtonModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
         TuiTextfieldControllerModule,
         TuiInputModule,
         TuiIslandModule,
-        TuiButtonModule
+        TuiButtonModule,
+        TuiLinkModule
     ]
 })
 export class LoginModule { }

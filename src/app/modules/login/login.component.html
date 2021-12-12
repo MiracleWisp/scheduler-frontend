@@ -1,6 +1,9 @@
 <div class="row">
   <tui-island class="login-form" size="l" textAlign="center">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h3 class="tui-form__header tui-form__header_margin-top_none">
+        Вход
+      </h3>
       <div class="tui-form__row">
         <tui-input formControlName="email">
           Введите email
@@ -11,7 +14,7 @@
           Введите пароль
         </tui-input-password>
       </div>
-      <div class="tui-form__buttons tui-form__buttons_align_center">
+      <div class="tui-form__row tui-form__buttons_align_center">
         <button
           tuiButton
           class="tui-form__button"
@@ -22,5 +25,8 @@
         </button>
       </div>
     </form>
+    <div class="tui-space_top-6">
+      <a tuiLink routerLink="/signup">Регистрация</a>
+    </div>
   </tui-island>
 </div>

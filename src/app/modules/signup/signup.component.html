@@ -1,0 +1,59 @@
+<div class="row">
+  <tui-island class="signup-form" size="l" textAlign="center">
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <h3 class="tui-form__header tui-form__header_margin-top_none">
+        Регистрация
+      </h3>
+      <div class="tui-form__row">
+        <tui-input formControlName="firstName">
+          Имя
+        </tui-input>
+      </div>
+      <div class="tui-form__row">
+        <tui-input formControlName="lastName">
+          Фамилия
+        </tui-input>
+      </div>
+      <div class="tui-form__row">
+        <tui-input formControlName="email">
+          Email
+        </tui-input>
+      </div>
+      <div class="tui-form__row">
+        <tui-input-password formControlName="password" class="tui-space_top-2">
+          Пароль
+        </tui-input-password>
+      </div>
+      <div class="tui-form__row">
+        <tui-checkbox-labeled formControlName="isSpecialist" size="l">
+          Зарегистрироваться как специалист
+        </tui-checkbox-labeled>
+      </div>
+      <ng-container *ngIf="signupForm.value.isSpecialist">
+        <div class="tui-form__row">
+          <tui-input formControlName="jobTitle">
+            Профессия
+          </tui-input>
+        </div>
+        <div class="tui-form__row">
+          <tui-text-area formControlName="about">
+            О себе
+          </tui-text-area>
+        </div>
+      </ng-container>
+      <div class="tui-form__row tui-form__buttons_align_center">
+        <button
+          tuiButton
+          class="tui-form__button"
+          size="m"
+          type="submit"
+          [showLoader]="loading">
+          Зарегистрироваться
+        </button>
+      </div>
+    </form>
+    <div class="tui-space_top-6">
+      <a tuiLink routerLink="/login">Уже есть аккаунт? Войти</a>
+    </div>
+  </tui-island>
+</div>

@@ -13,8 +13,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router) {
+    console.log(this.router.getCurrentNavigation().extras.state?.['successfulSignup']);
+    this.successfulSignup = this.router.getCurrentNavigation().extras.state?.['successfulSignup'];
   }
 
+  successfulSignup = false;
   loading = false;
   loginForm: FormGroup = new FormGroup({
     password: new FormControl('', Validators.required),
@@ -29,11 +32,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(_ => {
-      this.loading = false;
-      this.router.navigate(['/profile']);
-    }, error => {
-      this.loading = false;
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+      next: _ => {
+        this.loading = false;
+        this.router.navigate(['/profile']);
+      },
+      error: error => {
+        this.loading = false;
+      }
     })
   }
 }
