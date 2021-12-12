@@ -2,11 +2,15 @@ import {NgDompurifySanitizer} from "@tinkoff/ng-dompurify";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   TUI_SANITIZER,
-  TuiButtonModule, TuiDataListModule,
-  TuiDialogModule, TuiDropdownControllerModule, TuiHostedDropdownModule,
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiDialogModule,
+  TuiDropdownControllerModule,
+  TuiHostedDropdownModule,
   TuiLinkModule,
   TuiNotificationsModule,
-  TuiRootModule, TuiSvgModule
+  TuiRootModule,
+  TuiSvgModule
 } from "@taiga-ui/core";
 import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -20,6 +24,10 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {TuiAvatarModule} from "@taiga-ui/kit";
 import {TuiActiveZoneModule} from "@taiga-ui/cdk";
 import {TuiSidebarModule} from "@taiga-ui/addon-mobile";
+import {registerLocaleData} from "@angular/common";
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru-RU');
 
 @NgModule({
   declarations: [

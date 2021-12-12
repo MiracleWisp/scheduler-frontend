@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.authService.currentUser.isSpecialist) {
+    if (this.authService.currentUser?.isSpecialist) {
       this.menuItems.push({
         link: '/offerings',
         caption: 'Мои услуги'
