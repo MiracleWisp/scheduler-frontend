@@ -19,10 +19,6 @@ export class HeaderComponent implements OnInit {
     {
       link: '/appointments',
       caption: 'Мои записи'
-    },
-    {
-      link: '/schedule',
-      caption: 'Моё расписание'
     }
   ]
   dropdownItems: MenuItem[] = [
@@ -45,6 +41,12 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if (this.authService.currentUser.isSpecialist) {
+      this.menuItems.push({
+        link: '/schedule',
+        caption: 'Моё расписание'
+      })
+    }
   }
 
   onClick(item: MenuItem) {
