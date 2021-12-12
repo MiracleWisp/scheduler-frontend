@@ -5,23 +5,24 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import {TuiInputModule, TuiInputPasswordModule, TuiIslandModule} from "@taiga-ui/kit";
 import {ReactiveFormsModule} from "@angular/forms";
-import {TuiButtonModule, TuiLinkModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {TuiButtonModule, TuiLinkModule, TuiNotificationModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
 
 
 @NgModule({
   declarations: [
     LoginComponent
   ],
-    imports: [
-        CommonModule,
-        LoginRoutingModule,
-        TuiInputPasswordModule,
-        ReactiveFormsModule,
-        TuiTextfieldControllerModule,
-        TuiInputModule,
-        TuiIslandModule,
-        TuiButtonModule,
-        TuiLinkModule
-    ]
+  imports: [
+    CommonModule,
+    LoginRoutingModule,
+    TuiInputPasswordModule,
+    ReactiveFormsModule,
+    TuiTextfieldControllerModule,
+    TuiInputModule,
+    TuiIslandModule,
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiNotificationModule
+  ]
 })
 export class LoginModule { }

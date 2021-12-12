@@ -4,6 +4,9 @@
       <h3 class="tui-form__header tui-form__header_margin-top_none">
         Вход
       </h3>
+      <tui-notification *ngIf="successfulSignup" status="success" class="tui-space_top-4">
+        Вы успешно зарегистрированы!
+      </tui-notification>
       <div class="tui-form__row">
         <tui-input formControlName="email">
           Введите email
