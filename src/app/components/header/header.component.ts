@@ -15,12 +15,7 @@ export class HeaderComponent implements OnInit {
   currentUser$: Observable<User> = this.authService.currentUserSubject;
 
   open = false;
-  menuItems: MenuItem[] = [
-    {
-      link: '/appointments',
-      caption: 'Мои записи'
-    }
-  ]
+  menuItems: MenuItem[];
   dropdownItems: MenuItem[] = [
     {
       link: '/profile',
@@ -41,17 +36,24 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (this.authService.currentUser?.isSpecialist) {
-      this.menuItems.push({
-        link: '/offerings',
-        caption: 'Мои услуги'
-      }, {
-        link: '/schedule',
-        caption: 'Моё расписание'
-      })
-    }
-
-    this.allItems = [...this.menuItems, ...this.dropdownItems];
+    this.currentUser$.subscribe(user => {
+      this.menuItems = [
+        {
+          link: '/appointments',
+          caption: 'Мои записи'
+        }
+      ]
+      if (user.isSpecialist) {
+        this.menuItems.push({
+          link: '/offerings',
+          caption: 'Мои услуги'
+        }, {
+          link: '/schedule',
+          caption: 'Моё расписание'
+        })
+      }
+      this.allItems = [...this.menuItems, ...this.dropdownItems];
+    })
   }
 
   onClick(item: MenuItem) {

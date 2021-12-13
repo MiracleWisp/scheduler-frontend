@@ -1,0 +1,31 @@
+@import "~@taiga-ui/core/styles/mixins/mixins";
+
+.appointment-card {
+  .shadow(1);
+
+  &__service-name {
+    color: var(--tui-text-02);
+  }
+
+  &__status {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+
+    &._future {
+      background-color: var(--tui-success-fill);
+    }
+
+    &._canceled {
+      background-color: var(--tui-error-fill);
+    }
+
+    &._done {
+      background-color: var(--tui-info-fill);
+    }
+
+    &._draft {
+      background-color: var(--tui-warning-fill);
+    }
+  }
+}

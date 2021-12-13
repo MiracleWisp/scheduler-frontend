@@ -1,1 +1,7 @@
-<p>appointments works!</p>
+<h1 class="tui-text_h1">
+  Мои записи
+</h1>
+<app-client-appointments *ngIf="!isSpecialist">
+</app-client-appointments>
+<app-specialist-appointments *ngIf="isSpecialist">
+</app-specialist-appointments>
