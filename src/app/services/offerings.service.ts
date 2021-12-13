@@ -17,4 +17,8 @@ export class OfferingsService {
   public getMyOfferings(): Observable<Offering[]> {
     return this.http.get<Offering[]>(`${environment.apiUrl}/specialists/${this.authService.currentUser.id}/serviceOfferings`);
   }
+
+  createOffering(offering: Offering): Observable<Offering>{
+    return this.http.post<Offering>(`${environment.apiUrl}/serviceOfferings`, offering);
+  }
 }

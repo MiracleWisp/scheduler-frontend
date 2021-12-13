@@ -1,4 +1,14 @@
-<tui-scrollbar>
-  <app-offerings-table>
+<h1 class="tui-text_h1">
+  Мои услуги
+</h1>
+<button
+  tuiButton
+  type="button"
+  appearance="flat"
+  (click)="add()">
+  Добавить услугу
+</button>
+<tui-scrollbar class="tui-space_top-5">
+  <app-offerings-table [data]="data$ | async">
   </app-offerings-table>
 </tui-scrollbar>

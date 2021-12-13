@@ -50,7 +50,9 @@ registerLocaleData(localeRu, 'ru-RU');
     TuiDataListModule,
     TuiSvgModule,
     TuiSidebarModule,
-    TuiActiveZoneModule
+    TuiActiveZoneModule,
+    TuiRootModule,
+    TuiDialogModule,
   ],
   providers: [
     {

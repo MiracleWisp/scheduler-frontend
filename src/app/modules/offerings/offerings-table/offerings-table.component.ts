@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Observable, startWith} from "rxjs";
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Offering} from "../../../models/offering.model";
 import {OfferingsService} from "../../../services/offerings.service";
 
@@ -12,6 +11,9 @@ import {OfferingsService} from "../../../services/offerings.service";
 })
 export class OfferingsTableComponent implements OnInit {
 
+  @Input()
+  data: Offering[];
+
   columns = [
     'name',
     'price',
@@ -19,10 +21,6 @@ export class OfferingsTableComponent implements OnInit {
     'about',
     'actions'
   ];
-
-  data$: Observable<Offering[]> = this.offeringsService.getMyOfferings().pipe(
-    startWith([]),
-  );
 
   constructor(private offeringsService: OfferingsService) {
   }
