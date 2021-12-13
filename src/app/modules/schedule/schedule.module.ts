@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleComponent } from './schedule.component';
+import {TuiInputModule, TuiInputTimeModule} from "@taiga-ui/kit";
+import {TuiLabelModule, TuiTextfieldControllerModule} from "@taiga-ui/core";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -11,7 +14,12 @@ import { ScheduleComponent } from './schedule.component';
   ],
   imports: [
     CommonModule,
-    ScheduleRoutingModule
+    ScheduleRoutingModule,
+    TuiInputModule,
+    TuiLabelModule,
+    TuiTextfieldControllerModule,
+    TuiInputTimeModule,
+    FormsModule
   ]
 })
 export class ScheduleModule { }

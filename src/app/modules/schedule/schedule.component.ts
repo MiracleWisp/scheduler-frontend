@@ -1,17 +1,30 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
+import {Schedule} from "../../models/schedule.model";
+import {ScheduleService} from "../../services/schedule.service";
 
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.less'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class ScheduleComponent implements OnInit {
 
-  constructor() { }
+  schedules: Schedule[] = [];
 
-  ngOnInit(): void {
+  constructor(private scheduleService: ScheduleService) {
   }
 
+  @HostBinding('class')
+  private class = 'schedule'
+
+  ngOnInit(): void {
+    this.scheduleService.getMySchedule().subscribe(schedules => {
+      this.schedules = schedules;
+    })
+  }
+
+  log(e) {
+    console.log(e);
+  }
 }
