@@ -21,4 +21,8 @@ export class ScheduleService {
   public getSpecialistSchedule(specialistId: string): Observable<Schedule[]> {
     return this.http.get<Schedule[]>(`${environment.apiUrl}/specialists/${specialistId}/schedules`);
   }
+
+  public updateSchedule(schedule: Schedule): Observable<Schedule> {
+    return this.http.patch<Schedule>(`${environment.apiUrl}/schedules/${schedule.id}`, schedule);
+  }
 }
