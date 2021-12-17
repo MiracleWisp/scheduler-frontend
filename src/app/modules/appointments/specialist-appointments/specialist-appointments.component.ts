@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AppointmentService} from "../../../services/appointment.service";
 import {Observable} from "rxjs";
-import {AppointmentDto} from "../../../models/appointment.dto";
+import {AppointmentDto} from "../../../models/dto/appointment.dto";
 
 @Component({
   selector: 'app-specialist-appointments',

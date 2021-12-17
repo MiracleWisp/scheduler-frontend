@@ -4,7 +4,7 @@ import {AuthService} from "./auth.service";
 import {Observable} from "rxjs";
 import {Schedule} from "../models/schedule.model";
 import {environment} from "../../environments/environment";
-import {AppointmentDto} from "../models/appointment.dto";
+import {AppointmentDto} from '../models/dto/appointment.dto';
 
 @Injectable({
   providedIn: 'root'

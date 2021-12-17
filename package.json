@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
-    "build": "ng build",
+    "build": "ng build && copyfiles -u 1 nginx-config/* dist",
+    "copy": "copyfiles -u 1 nginx-config/* dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -47,6 +48,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "copyfiles": "^2.4.1"
   }
 }

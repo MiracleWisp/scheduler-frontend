@@ -1,4 +1,4 @@
-import {AppointmentStatus} from "./const/appointment-status.enum";
+import {AppointmentStatus} from "../const/appointment-status.enum";
 
 export class AppointmentDto {
   id: string;
