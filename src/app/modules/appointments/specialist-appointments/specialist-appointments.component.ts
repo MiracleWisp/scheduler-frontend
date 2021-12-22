@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@an
 import {AppointmentService} from "../../../services/appointment.service";
 import {Observable} from "rxjs";
 import {AppointmentDto} from "../../../models/dto/appointment.dto";
+import {APPOINTMENT_STATUS_MAP} from "../../../models/const/appointment-status.enum";
 
 @Component({
   selector: 'app-specialist-appointments',
@@ -13,7 +14,7 @@ import {AppointmentDto} from "../../../models/dto/appointment.dto";
 export class SpecialistAppointmentsComponent implements OnInit {
 
   appointments$: Observable<AppointmentDto[]> = this.appointmentService.getMyAppointments();
-
+  appointmentStatusMap = APPOINTMENT_STATUS_MAP;
   constructor(private appointmentService: AppointmentService) {
   }
 

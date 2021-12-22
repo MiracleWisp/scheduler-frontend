@@ -14,7 +14,10 @@
           <div class="tui-text_h6 ms-auto">
             <tui-hosted-dropdown
               [content]="dropdown">
-              <tui-avatar text="{{currentUser.firstName}} {{currentUser.lastName}}"></tui-avatar>
+              <tui-avatar
+                text="{{currentUser.firstName}} {{currentUser.lastName}}"
+                avatarUrl="https://i.pravatar.cc/150?u={{currentUser.id}}">
+              </tui-avatar>
             </tui-hosted-dropdown>
           </div>
         </div>

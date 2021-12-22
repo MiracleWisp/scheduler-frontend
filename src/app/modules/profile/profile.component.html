@@ -1,1 +1,14 @@
-<p>profile works!</p>
+<h1 class="tui-text_h1">
+  Профиль
+</h1>
+<div class="row ">
+  <div class="col-md-3">
+    <img class="w-100"
+         src="https://i.pravatar.cc/500?u={{currentUser.id}}">
+    <div class="tui-text_h5">{{currentUser.firstName}} {{currentUser.lastName}}</div>
+    <div>{{currentUser.jobTitle}}</div>
+  </div>
+  <div class="col-md-9">
+    {{currentUser.about}}
+  </div>
+</div>
