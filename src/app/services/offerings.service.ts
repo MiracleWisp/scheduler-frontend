@@ -18,6 +18,10 @@ export class OfferingsService {
     return this.http.get<Offering[]>(`${environment.apiUrl}/specialists/${this.authService.currentUser.id}/serviceOfferings`);
   }
 
+  public getOfferingsBySpecialistId(specialistId: string): Observable<Offering[]> {
+    return this.http.get<Offering[]>(`${environment.apiUrl}/specialists/${specialistId}/serviceOfferings`);
+  }
+
   public createOffering(offering: Offering): Observable<Offering>{
     return this.http.post<Offering>(`${environment.apiUrl}/serviceOfferings`, offering);
   }

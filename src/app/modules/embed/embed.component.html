@@ -1,0 +1,27 @@
+<div class="row" *ngIf="specialist">
+  <div class="col-md-3">
+    <img class="w-100"
+         src="https://i.pravatar.cc/500?u={{specialist.id}}">
+    <div class="tui-text_h5">{{specialist.firstName}} {{specialist.lastName}}</div>
+    <div>{{specialist.jobTitle}}</div>
+  </div>
+  <div class="col-md-9">
+    {{specialist.about}}
+    <tui-island *ngFor="let offer of offerings"
+                class="tui-space_top-4 tui-space_bottom-4 embed__offering-card">
+      <h3 class="tui-island__title">{{offer.name}}</h3>
+      <p class="tui-island__paragraph">
+        {{offer.about}}
+      </p>
+      <button
+        tuiButton
+        type="button"
+        appearance="flat"
+        size="m"
+        class="tui-island__footer-button"
+        (click)="openCreateAppointmentDialog(offer)">
+        Записаться
+      </button>
+    </tui-island>
+  </div>
+</div>

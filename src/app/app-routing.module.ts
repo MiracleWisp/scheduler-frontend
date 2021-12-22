@@ -43,6 +43,10 @@ const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     data: {roles: [Role.ROLE_SPECIALIST]}
   },
+  {
+    path: 'embed',
+    loadChildren: () => import('./modules/embed/embed.module').then(m => m.EmbedModule)
+  },
 ];
 
 @NgModule({
