@@ -1,6 +1,5 @@
-<div class="d-flex">
-  <tui-stepper class="pe-none"
-               orientation="vertical"
+<div class="d-flex flex-column align-items-center">
+  <tui-stepper class="pe-none tui-space_bottom-5"
                [activeItemIndex]="activeItemIndex">
     <button *ngFor="let step of steps" tuiStep [state]="step.state">{{step.caption}}</button>
   </tui-stepper>
@@ -8,13 +7,55 @@
     <!-- the same view can be shown in more than one case -->
     <div *ngSwitchCase="0">
       <tui-calendar [value]="chosenDate" (dayClick)="onDayClick($event)"></tui-calendar>
-      <div *ngIf="chosenDate">Chosen date: {{chosenDate}}</div>
     </div>
-    <div *ngSwitchCase="1">1</div>
-    <div *ngSwitchCase="2">2</div>
+    <div *ngSwitchCase="1">
+      <form class="d-flex flex-wrap" [formGroup]="timeslotForm">
+        <tui-radio-labeled *ngFor="let timeslot of timeslots"
+                           size="l"
+                           formControlName="timeslot"
+                           [item]="timeslot">
+          {{timeslot}}
+        </tui-radio-labeled>
+      </form>
+    </div>
+    <div *ngSwitchCase="2">
+      <div class="d-flex align-items-center">
+        <tui-avatar
+          text="{{specialist.firstName}} {{specialist.lastName}}"
+          size="l"
+          avatarUrl="https://i.pravatar.cc/500?u={{specialist.id}}"
+          [rounded]="true">
+        </tui-avatar>
+        <div class="tui-space_left-5">
+          <div class="tui-island__title">
+            {{specialist.firstName}} {{specialist.lastName}}
+          </div>
+          <div class="tui-text_body-s">
+            {{offering.name}}
+          </div>
+        </div>
+      </div>
+      <tui-line-clamp
+        [content]="offering.about"
+        [linesLimit]="4">
+      </tui-line-clamp>
+      <div class="d-flex align-items-center tui-space_top-5">
+        <div class="d-flex">
+          <tui-svg src="tuiIconCalendar"></tui-svg>
+          {{appointment.date | date : 'short'}}
+        </div>
+        <div class="d-flex tui-space_left-3">
+          <tui-svg src="tuiIconTime"></tui-svg>
+          {{offering.duration}} мин.
+        </div>
+        <div class="d-flex tui-space_left-3">
+          {{offering.duration | currency:'RUB':'symbol-narrow'}}
+        </div>
+      </div>
+    </div>
   </ng-container>
 </div>
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end tui-space_top-5">
   <button tuiButton
           appearance="outline"
           size="m"
@@ -25,6 +66,7 @@
   <button tuiButton
           class="tui-space_left-4"
           size="m"
+          [showLoader]="loading"
           (click)="next()">
     {{nextBtn}}
   </button>

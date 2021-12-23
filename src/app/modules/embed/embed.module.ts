@@ -3,9 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { EmbedRoutingModule } from './embed-routing.module';
 import { EmbedComponent } from './embed.component';
-import {TuiIslandModule, TuiStepperModule} from "@taiga-ui/kit";
-import {TuiButtonModule, TuiCalendarModule} from "@taiga-ui/core";
+import {
+  TuiAvatarModule,
+  TuiIslandModule,
+  TuiLineClampModule,
+  TuiRadioLabeledModule,
+  TuiStepperModule
+} from "@taiga-ui/kit";
+import {TuiButtonModule, TuiCalendarModule, TuiSvgModule} from "@taiga-ui/core";
 import { CreateAppointmentDialogComponent } from './create-appointment-dialog/create-appointment-dialog.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AppointmentStatusPipeModule} from "../../pipes/appointment-status-pipe/appointment-status-pipe.module";
 
 
 @NgModule({
@@ -19,7 +27,14 @@ import { CreateAppointmentDialogComponent } from './create-appointment-dialog/cr
     TuiIslandModule,
     TuiButtonModule,
     TuiStepperModule,
-    TuiCalendarModule
+    TuiCalendarModule,
+    TuiRadioLabeledModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiAvatarModule,
+    AppointmentStatusPipeModule,
+    TuiSvgModule,
+    TuiLineClampModule
   ]
 })
 export class EmbedModule { }

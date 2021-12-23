@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Injector, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Offering} from "../../models/offering.model";
 import {User} from "../../models/user.model";
@@ -6,7 +6,6 @@ import {forkJoin} from "rxjs";
 import {OfferingsService} from "../../services/offerings.service";
 import {SpecialistsService} from "../../services/specialists.service";
 import {PolymorpheusComponent} from "@tinkoff/ng-polymorpheus";
-import {OfferingPopupComponent} from "../offerings/offering-popup/offering-popup.component";
 import {TuiDialogService} from "@taiga-ui/core";
 import {CreateAppointmentDialogComponent} from "./create-appointment-dialog/create-appointment-dialog.component";
 
@@ -44,7 +43,7 @@ export class EmbedComponent implements OnInit {
     const dialog = this.dialogService.open<void>(
       new PolymorpheusComponent(CreateAppointmentDialogComponent, this.injector),
       {
-        data: offer,
+        data: {offering: offer, specialist: this.specialist},
         dismissible: false,
         label: `Запись (${offer.name})`
       },

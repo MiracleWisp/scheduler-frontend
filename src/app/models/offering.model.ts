@@ -7,5 +7,5 @@ export class Offering {
   price: number;
   duration: number;
   approveRequired: boolean;
-  specialist: User;
+  specialistId: string;
 }

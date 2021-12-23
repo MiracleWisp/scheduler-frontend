@@ -1,7 +1,7 @@
 import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
 import {Schedule} from "../../models/schedule.model";
 import {ScheduleService} from "../../services/schedule.service";
-import {forkJoin} from "rxjs";
+import {forkJoin, mergeMapTo} from "rxjs";
 import {TuiTime} from "@taiga-ui/cdk";
 
 @Component({
@@ -55,10 +55,13 @@ export class ScheduleComponent implements OnInit {
       if (changed) {
         tasks.push(this.scheduleService.updateSchedule(schedule))
       }
-
     }
-    forkJoin(tasks).subscribe({
-      complete: () => {
+
+    forkJoin(tasks).pipe(
+      mergeMapTo(this.scheduleService.getMySchedule())
+    ).subscribe({
+      next: schedules => {
+        this.schedules = schedules;
         this.loading = false;
       },
       error: err => {

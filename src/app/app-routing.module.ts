@@ -45,7 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'embed',
-    loadChildren: () => import('./modules/embed/embed.module').then(m => m.EmbedModule)
+    loadChildren: () => import('./modules/embed/embed.module').then(m => m.EmbedModule),
+    canActivate: [AuthGuard],
   },
 ];
 
