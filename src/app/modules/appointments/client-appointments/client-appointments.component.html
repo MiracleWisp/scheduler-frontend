@@ -1,1 +1,35 @@
-<p>client-appointments works!</p>
+<tui-island *ngFor="let appointment of appointments$ | async"
+            class="tui-space_top-4 tui-space_bottom-4 appointment-card">
+  <div class="d-flex align-items-center">
+    <tui-avatar
+      text="{{appointment.specialistName}}"
+      size="l"
+      [rounded]="true">
+    </tui-avatar>
+    <div class="tui-space_left-5">
+      <div class="tui-island__title">
+        {{appointment.specialistName}} ({{appointment.specialistJobTitle}})
+      </div>
+      <div class="tui-text_body-s appointment-card__service-name">
+        {{appointment.serviceName}}
+      </div>
+    </div>
+  </div>
+  <div class="d-flex align-items-center tui-space_top-5">
+    <div class="appointment-card__status {{appointment.status | appointmentStatus}} tui-space_right-3"></div>
+    {{appointment.status | appointmentStatusName}}
+  </div>
+  <div class="d-flex align-items-center tui-space_top-5">
+    <div class="d-flex">
+      <tui-svg src="tuiIconCalendar"></tui-svg>
+      {{appointment.date | date : 'short'}}
+    </div>
+    <div class="d-flex tui-space_left-3">
+      <tui-svg src="tuiIconTime"></tui-svg>
+      {{appointment.serviceDuration}} мин.
+    </div>
+    <div class="d-flex tui-space_left-3">
+      {{appointment.servicePrice | currency:'RUB':'symbol-narrow'}}
+    </div>
+  </div>
+</tui-island>

@@ -18,7 +18,11 @@ export class AppointmentService {
   }
 
   public getMyAppointments(): Observable<AppointmentDto[]> {
-    return this.http.get<AppointmentDto[]>(`${environment.apiUrl}/specialists/${this.authService.currentUser.id}/appointments`);
+    if (this.authService.currentUser.isSpecialist) {
+      return this.http.get<AppointmentDto[]>(`${environment.apiUrl}/specialists/${this.authService.currentUser.id}/appointments`);
+    } else {
+      return this.http.get<AppointmentDto[]>(`${environment.apiUrl}/appointments`);
+    }
   }
 
   public getSpecialistAppointments(specialistId: string): Observable<Schedule[]> {
