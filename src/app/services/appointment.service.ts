@@ -49,4 +49,8 @@ export class AppointmentService {
   public updateAppointment(appointment: Appointment): Observable<Appointment> {
     return this.http.patch<Appointment>(`${environment.apiUrl}/appointments/${appointment.id}`, appointment);
   }
+
+  public deleteAppointment(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/appointments/${id}`);
+  }
 }

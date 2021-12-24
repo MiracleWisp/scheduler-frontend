@@ -10,6 +10,9 @@
     </div>
     <div *ngSwitchCase="1">
       <form class="d-flex flex-wrap" [formGroup]="timeslotForm">
+        <div *ngIf="timeslots.length === 0">
+          Запись на выбранный день недоступна
+        </div>
         <tui-radio-labeled *ngFor="let timeslot of timeslots"
                            size="l"
                            formControlName="timeslot"

@@ -9,6 +9,11 @@
     <div>{{currentUser.jobTitle}}</div>
   </div>
   <div class="col-md-9">
-    {{currentUser.about}}
+    <a tuiLink [routerLink]="['/embed', currentUser.id]">
+      Ссылка на запись
+    </a>
+    <div>
+      {{currentUser.about}}
+    </div>
   </div>
 </div>

@@ -14,6 +14,7 @@ export class AuthService {
 
   public currentUser: User = undefined;
   public currentUserSubject: Subject<User> = new ReplaySubject(1);
+  public redirectUrl: string;
 
   constructor(private http: HttpClient, private router: Router) {
   }

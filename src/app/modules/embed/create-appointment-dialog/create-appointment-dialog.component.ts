@@ -75,7 +75,7 @@ export class CreateAppointmentDialogComponent implements OnInit {
     this.steps[this.activeItemIndex].state = 'normal';
     this.activeItemIndex--;
     if (this.appointment) {
-      this.updateAppointment('CANCELED').subscribe(appointment => {
+      this.deleteAppointment().subscribe(appointment => {
         this.appointment = undefined;
       })
     }
@@ -144,6 +144,10 @@ export class CreateAppointmentDialogComponent implements OnInit {
 
   timePicked(timeslot: string) {
     console.log(timeslot);
+  }
+
+  private deleteAppointment() {
+    return this.appointmentsService.deleteAppointment(this.appointment.id);
   }
 }
 
